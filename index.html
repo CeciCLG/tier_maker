@@ -46,8 +46,10 @@
                 </aside>
             </div>
         </section>
-        <footer id="selector">
-            <section id="selector-buttons">
+    </main>
+    <footer id="selector">
+        <section id="selector-buttons">
+            <div>
                 <label id="add-image-button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
@@ -56,9 +58,10 @@
                         <path d="M9 12h6" />
                         <path d="M12 9v6" />
                     </svg>
-                    <input type="file" id="image-input" hidden>
+                    <input type="file" id="image-input" accept=".jpg,.png" multiple hidden>
                 </label>
-
+            </div>
+            <div>
                 <button id="reset-list">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
@@ -68,13 +71,13 @@
                         <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
                     </svg>
                 </button>
-            </section>
+            </div>
+        </section>
 
-            <section id="selector-items">
+        <section id="selector-items">
 
-            </section>
-        </footer>
-    </main>
+        </section>
+    </footer>
 </body>
 
 </html>

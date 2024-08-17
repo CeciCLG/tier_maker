@@ -57,3 +57,43 @@ header img {
     }
 
 }
+
+#selector {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & #selector-buttons {
+        display: flex;
+        flex-direction: row;
+
+        & div {
+            cursor: pointer;
+            margin-inline: 15px;
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                background-color: #232223;
+                scale: 1.1;
+            }
+        }
+
+        & svg {
+            width: 35px;
+            height: 35px;
+        }
+
+    }
+
+}
+
+#selector-items {
+    border: 1px solid #37363b;
+    width: 100%;
+    height: 100px;
+    margin: 30px;
+}
