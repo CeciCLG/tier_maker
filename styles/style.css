@@ -1,9 +1,17 @@
+:root {
+    --color-s: #ff7f80;
+    --color-a: #ffc07f;
+    --color-b: #ffdf80;
+    --color-c: #fdff7f;
+    --color-d: #bfff7f;
+    --color-e: #7fff7f;
+}
+
 body {
-    background-color: rgb(26, 23, 23);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: larger;
-    color: aliceblue;
+    background-color: #111;
     margin: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #fff;
 }
 
 header {
@@ -14,6 +22,6 @@ header {
 }
 
 header img {
-    max-width: 240px;
+    max-width: 300px;
     height: auto;
 }
