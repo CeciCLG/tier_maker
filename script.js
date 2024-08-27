@@ -13,6 +13,15 @@ function handleCreate(src) {
     imageSection.appendChild(imageItem);
 }
 
+function levelContenteditable(boolean) {
+    const level = document.querySelectorAll('.label span');
+
+    level.forEach((span) => {
+        span.contentEditable = boolean;
+    })
+
+};
+
 imageInput.addEventListener("change", (event) => {
     const [file] = event.target.files;
 
@@ -32,13 +41,19 @@ imageInput.addEventListener("change", (event) => {
 
 let draggedElement = null;
 
-let sourcerContainer = null;
+let sourceContainer = null;
 
 function handleDragStar(event) {
-    console.log('dragStar');
+    levelContenteditable(false);
+    console.log('dragStar', event.target);
+    draggedElement = event.target; //el elemento que estamos arrastrando
+    sourceContainer = draggedElement.parentNode; //desde qué sitio estamos arrastrando el elemento
 }
 
 function handleDrangEnd(event) {
+    levelContenteditable(true);
     console.log('dragend');
-
+    //devolvemos las variables a su estado habitual
+    draggedElement = null;
+    sourceContainer = null;
 }
