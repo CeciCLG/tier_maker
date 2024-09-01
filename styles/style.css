@@ -38,7 +38,7 @@ main {
     background-color: #232223;
 }
 
-.level {
+.row {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #111;

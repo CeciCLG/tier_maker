@@ -1,6 +1,7 @@
 const imageInput = document.querySelector("#image-input");
 const imageSection = document.querySelector("#selector-items");
 
+
 function handleCreate(src) {
     const imageItem = document.createElement("img");
     imageItem.src = src;
@@ -11,6 +12,8 @@ function handleCreate(src) {
     imageItem.addEventListener('dragend', handleDrangEnd);
 
     imageSection.appendChild(imageItem);
+
+    return imageItem
 }
 
 function levelContenteditable(boolean) {
@@ -48,6 +51,7 @@ function handleDragStar(event) {
     console.log('dragStar', event.target);
     draggedElement = event.target; //el elemento que estamos arrastrando
     sourceContainer = draggedElement.parentNode; //desde qué sitio estamos arrastrando el elemento
+    event.dataTransfer.setData('text/plain', draggedElement.src); //transferencia de la información del src
 }
 
 function handleDrangEnd(event) {
@@ -56,4 +60,39 @@ function handleDrangEnd(event) {
     //devolvemos las variables a su estado habitual
     draggedElement = null;
     sourceContainer = null;
+}
+
+const rows = document.querySelectorAll('.tier .row');
+
+
+rows.forEach(row => {
+    row.addEventListener('drop', handleDrop);
+    row.addEventListener('dragover', handleDragOver);
+    row.addEventListener('dragleave', handleDragLeave);
+})
+
+function handleDrop(event) {
+    event.preventDefault();
+
+    const { currentTarget, dataTransfer } = event;
+    console.log(currentTarget);
+
+    if (sourceContainer && draggedElement) {
+        sourceContainer.removeChild(draggedElement);
+    }
+
+    if (draggedElement) {
+        const src = dataTransfer.getData('text/plain'); //sacamos la información del src que guardamos antes en el evento
+
+        const imgElement = handleCreate(src);
+        currentTarget.appendChild(imgElement);
+    }
+}
+function handleDragOver(event) {
+    event.preventDefault();
+
+}
+function handleDragLeave(event) {
+    event.preventDefault();
+
 }
