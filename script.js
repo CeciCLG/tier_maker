@@ -90,6 +90,7 @@ function handleDrop(event) {
     }
 
     if (draggedElement) {
+        currentTarget.classList.remove('drag-over');
         const src = dataTransfer.getData('text/plain'); //sacamos la información del src que guardamos antes en el evento
 
         const imgElement = handleCreate(src);
@@ -103,12 +104,14 @@ function handleDragOver(event) {
     const { currentTarget } = event;
     if (sourceContainer === currentTarget) return
 
-
+    currentTarget.classList.add('drag-over')
 
 }
 function handleDragLeave(event) {
     event.preventDefault();
     console.log('dragLeave');
 
+    const { currentTarget } = event;
 
+    currentTarget.classList.remove('drag-over');
 }

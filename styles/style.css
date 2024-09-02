@@ -42,6 +42,11 @@ main {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid #111;
+
+    &.drag-over {
+        background: #555;
+        scale: 1.01;
+    }
 }
 
 .label {
