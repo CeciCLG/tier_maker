@@ -27,13 +27,20 @@ header img {
 }
 
 main {
+    display: flex;
+    justify-content: center;
     margin-inline: 100px;
     user-select: none;
+}
+
+footer {
+    margin-inline: 100px;
 }
 
 .tier {
     display: flex;
     flex-direction: column;
+    width: 50%;
     border: 1px solid #37363b;
     background-color: #232223;
 }
@@ -69,7 +76,7 @@ main {
 }
 
 #selector {
-    margin: 30px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,10 +113,11 @@ main {
     display: flex;
     flex-wrap: wrap;
     margin: 60px;
-    padding: 40px;
+    padding: 30px;
     min-height: 100px;
-    width: 90%;
+    width: 50%;
     border: 1px solid #37363b;
+    justify-content: space-around;
 }
 
 .item-image {

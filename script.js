@@ -1,6 +1,6 @@
 const imageInput = document.querySelector("#image-input");
 const imageSection = document.querySelector("#selector-items");
-
+const resetList = document.querySelector('#reset-list');
 
 function handleCreate(src) {
     const imageItem = document.createElement("img");
@@ -37,7 +37,6 @@ imageInput.addEventListener("change", (event) => {
             handleCreate(src)
         };
 
-
         reader.readAsDataURL(file);
     }
 });
@@ -48,7 +47,7 @@ let sourceContainer = null;
 
 function handleDragStar(event) {
     levelContenteditable(false);
-    console.log('dragStar', event.target);
+
     draggedElement = event.target; //el elemento que estamos arrastrando
     sourceContainer = draggedElement.parentNode; //desde qué sitio estamos arrastrando el elemento
     event.dataTransfer.setData('text/plain', draggedElement.src); //transferencia de la información del src
@@ -56,7 +55,6 @@ function handleDragStar(event) {
 
 function handleDrangEnd(event) {
     levelContenteditable(true);
-    console.log('dragend');
     //devolvemos las variables a su estado habitual
     draggedElement = null;
     sourceContainer = null;
@@ -79,14 +77,11 @@ imageSection.addEventListener('dragleave', handleDragLeave);
 
 function handleDrop(event) {
     event.preventDefault();
-    console.log('drop');
 
 
     const { currentTarget, dataTransfer } = event;
-    console.log(currentTarget);
 
     if (sourceContainer === currentTarget) return
-    console.log('vuelve a añadir');
 
 
     if (sourceContainer && draggedElement) {
@@ -105,7 +100,6 @@ function handleDrop(event) {
 }
 function handleDragOver(event) {
     event.preventDefault();
-    console.log('dragOver');
 
     const { currentTarget, dataTransfer } = event;
     if (sourceContainer === currentTarget) return
@@ -122,12 +116,22 @@ function handleDragOver(event) {
 
 };
 
+
 function handleDragLeave(event) {
     event.preventDefault();
-    console.log('dragLeave');
 
     const { currentTarget } = event;
 
     currentTarget.classList.remove('drag-over');
     currentTarget.querySelector('.drag-preview')?.remove();
 }
+
+
+resetList.addEventListener('click', () => {
+    const items = document.querySelectorAll('.tier .item-image');
+
+    items.forEach(item => {
+        item.remove();
+        imageSection.appendChild(item);
+    })
+});
