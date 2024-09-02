@@ -69,10 +69,18 @@ rows.forEach(row => {
     row.addEventListener('drop', handleDrop);
     row.addEventListener('dragover', handleDragOver);
     row.addEventListener('dragleave', handleDragLeave);
-})
+});
+
+
+
+imageSection.addEventListener('drop', handleDrop);
+imageSection.addEventListener('dragover', handleDragOver);
+imageSection.addEventListener('dragleave', handleDragLeave);
 
 function handleDrop(event) {
     event.preventDefault();
+    console.log('drop');
+
 
     const { currentTarget, dataTransfer } = event;
     console.log(currentTarget);
@@ -90,9 +98,17 @@ function handleDrop(event) {
 }
 function handleDragOver(event) {
     event.preventDefault();
+    console.log('dragOver');
+
+    const { currentTarget } = event;
+    if (sourceContainer === currentTarget) return
+
+
 
 }
 function handleDragLeave(event) {
     event.preventDefault();
+    console.log('dragLeave');
+
 
 }
