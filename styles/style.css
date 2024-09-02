@@ -112,12 +112,12 @@ footer {
 #selector-items {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     margin: 60px;
     padding: 30px;
-    min-height: 100px;
+    min-height: 90px;
     width: 50%;
     border: 1px solid #37363b;
-    justify-content: space-around;
 }
 
 .item-image {
