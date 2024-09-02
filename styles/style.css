@@ -27,7 +27,7 @@ header img {
 }
 
 main {
-    margin-inline: 30px;
+    margin-inline: 100px;
     user-select: none;
 }
 
@@ -120,4 +120,8 @@ main {
     object-fit: cover;
     background-color: #fff;
 
+    &.drag-preview {
+        opacity: 0.4;
+        pointer-events: none;
+    }
 }
