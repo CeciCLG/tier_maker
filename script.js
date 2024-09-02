@@ -26,19 +26,23 @@ function levelContenteditable(boolean) {
 };
 
 imageInput.addEventListener("change", (event) => {
-    const [file] = event.target.files;
+    const { files } = event.target;
 
-    if (file) {
-        const reader = new FileReader();
+    console.log(files);
 
-        reader.onload = (eventReader) => {
+    Array.from(files).forEach(file => {
+        if (file) {
+            const reader = new FileReader();
 
-            let src = eventReader.target.result;
-            handleCreate(src)
-        };
+            reader.onload = (eventReader) => {
 
-        reader.readAsDataURL(file);
-    }
+                let src = eventReader.target.result;
+                handleCreate(src)
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
 });
 
 let draggedElement = null;
