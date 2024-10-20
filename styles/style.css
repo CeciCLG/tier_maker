@@ -118,6 +118,17 @@ footer {
     min-height: 90px;
     width: 50%;
     border: 1px solid #37363b;
+
+    &.drag-files {
+        background: #555;
+        border-style: dashed;
+    }
+
+    &.drag-no-files {
+        background: #a43f3f;
+        border-style: dashed;
+        border-color: #ff7f80;
+    }
 }
 
 .item-image {

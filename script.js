@@ -28,8 +28,6 @@ function levelContenteditable(boolean) {
 imageInput.addEventListener("change", (event) => {
     const { files } = event.target;
 
-    console.log(files);
-
     Array.from(files).forEach(file => {
         if (file) {
             const reader = new FileReader();
@@ -102,6 +100,7 @@ function handleDrop(event) {
     currentTarget.classList.remove('drag-over');
     currentTarget.querySelector('.drag-preview')?.remove();
 }
+
 function handleDragOver(event) {
     event.preventDefault();
 
@@ -139,3 +138,29 @@ resetList.addEventListener('click', () => {
         imageSection.appendChild(item);
     })
 });
+
+imageSection.addEventListener('drop', handleDropFromDesktop);
+imageSection.addEventListener('dragover', handleDragFromDesktop);
+
+function handleDropFromDesktop(event) {
+    event.preventDefault();
+}
+
+function handleDragFromDesktop(event) {
+    event.preventDefault();
+
+    const { dataTransfer, currentTarget } = event;
+
+    console.log({ dataTransfer, currentTarget });
+
+    console.log(dataTransfer.items[0].type);
+
+
+    if (dataTransfer.types.includes('Files') && dataTransfer.items[0].type.includes('image')) {
+        currentTarget.classList.remove('drag-no-files');
+        currentTarget.classList.add('drag-files');
+    } else {
+        currentTarget.classList.remove('drag-files');
+        currentTarget.classList.add('drag-no-files');
+    }
+}
