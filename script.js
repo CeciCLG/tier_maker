@@ -106,6 +106,7 @@ function handleDrop(event) {
 
     currentTarget.classList.remove('drag-over');
     currentTarget.querySelector('.drag-preview')?.remove();
+    currentTarget.classList.remove('drag-files');
 }
 
 function handleDragOver(event) {
@@ -134,6 +135,8 @@ function handleDragLeave(event) {
 
     currentTarget.classList.remove('drag-over');
     currentTarget.querySelector('.drag-preview')?.remove();
+    currentTarget.classList.remove('drag-no-files');
+    currentTarget.classList.remove('drag-files');
 }
 
 
