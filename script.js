@@ -25,22 +25,29 @@ function levelContenteditable(boolean) {
 
 };
 
+function useFilesToCreateItems(files) {
+
+    if (files && files.length > 0) {
+
+        Array.from(files).forEach(file => {
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = (eventReader) => {
+
+                    let src = eventReader.target.result;
+                    handleCreate(src)
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+    };
+}
+
 imageInput.addEventListener("change", (event) => {
     const { files } = event.target;
-
-    Array.from(files).forEach(file => {
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = (eventReader) => {
-
-                let src = eventReader.target.result;
-                handleCreate(src)
-            };
-
-            reader.readAsDataURL(file);
-        }
-    });
+    useFilesToCreateItems(files);
 });
 
 let draggedElement = null;
@@ -144,6 +151,14 @@ imageSection.addEventListener('dragover', handleDragFromDesktop);
 
 function handleDropFromDesktop(event) {
     event.preventDefault();
+
+    const { dataTransfer, currentTarget } = event;
+
+    if (dataTransfer.types.includes('Files') && dataTransfer.items[0].type.includes('image')) {
+        currentTarget.classList.remove('drag-files');
+        const { files } = dataTransfer;
+        useFilesToCreateItems(files);
+    }
 }
 
 function handleDragFromDesktop(event) {
@@ -151,12 +166,12 @@ function handleDragFromDesktop(event) {
 
     const { dataTransfer, currentTarget } = event;
 
-    console.log({ dataTransfer, currentTarget });
+    console.log(dataTransfer);
 
-    console.log(dataTransfer.items[0].type);
+    console.log(dataTransfer.items[0].type.includes('url'));
 
 
-    if (dataTransfer.types.includes('Files') && dataTransfer.items[0].type.includes('image')) {
+    if ((dataTransfer.types.includes('Files') && dataTransfer.items[0].type.includes('image')) || dataTransfer.items[0].type.includes('url')) {
         currentTarget.classList.remove('drag-no-files');
         currentTarget.classList.add('drag-files');
     } else {
@@ -164,3 +179,4 @@ function handleDragFromDesktop(event) {
         currentTarget.classList.add('drag-no-files');
     }
 }
+
